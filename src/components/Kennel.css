@@ -1,3 +1,11 @@
 .topMargin {
     margin-top: 40px;
 }
+
+
+.animals {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
