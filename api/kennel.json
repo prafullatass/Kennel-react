@@ -1,70 +1,125 @@
-
 {
-    "employees": [
-        { "id": 1, "name": "Jessica Younker", "designation": "Manager", "location" : 1},
-        { "id": 2, "name": "Jordan Nelson","designation": "Store Keeper", "location" : 1 },
-        { "id": 3, "name": "Zoe LeBlanc", "designation": "Manager", "location" : 2 },
-        { "id": 4, "name": "Praful Sonawane", "designation": "Excutive", "location" : 2 },
-        { "id": 5, "name": "Joe", "designation": "Lead", "location" : 2 },
-        { "id": 6, "name": "Blaise Roberts","designation": "HR Dept", "location" : 1 }
-    ],
-
-    "owners": [
-        { "id": 1, "name": "Ryan Tanay", "phoneNo":"6156688693" },
-        { "id": 2, "name": "Emma Beaton", "phoneNo":"1111111111"},
-        { "id": 3, "name": "Dani Adkins", "phoneNo":"2222222" },
-        { "id": 4, "name": "Adam Oswalt", "phoneNo":"3333333333" },
-        {
-            "id": 5,
-            "name": "Fletcher Bangs",
-            "phoneNo": "444444444444"
-          },
-          {
-            "id": 6,
-            "name": "Angela Lee",
-            "phoneNo": "11111"
-          }
-    ],
-
-    "locations" : [
-        { "id": 1, "name": "Nashville North", "address": "500 Circle Way" },
-        { "id": 2, "name": "Nashville South", "address": "10101 Binary Court" }
-    ],
-
-    "animals" : [
-        { "id": 1, "name": "Doodles" },
-        { "id": 2, "name": "Jack" },
-        { "id": 3, "name": "Angus" },
-        { "id": 4, "name": "Henley" },
-        { "id": 5, "name": "Derkins" },
-        { "id": 6, "name": "Checkers" }
-    ],
-    "animalOwners": [
-        {
-          "id": 1,
-          "animalId": 1,
-          "ownerId": 5
-        },
-        {
-          "id": 3,
-          "animalId": 3,
-          "ownerId": 1
-        },
-        {
-          "id": 4,
-          "animalId": 4,
-          "ownerId": 2
-        },
-        {
-          "id": 5,
-          "animalId": 5,
-          "ownerId": 4
-        },
-        {
-          "id": 6,
-          "animalId": 5,
-          "ownerId": 6
-        }
-      ]
-
+  "employees": [
+    {
+      "id": 1,
+      "name": "Jessica Younker",
+      "designation": "Manager",
+      "location": 1
+    },
+    {
+      "id": 3,
+      "name": "Zoe LeBlanc",
+      "designation": "Manager",
+      "location": 2
+    },
+    {
+      "id": 5,
+      "name": "Joe",
+      "designation": "Lead",
+      "location": 2
+    },
+    {
+      "id": 6,
+      "name": "Blaise Roberts",
+      "designation": "HR Dept",
+      "location": 1
     }
+  ],
+  "owners": [
+    {
+      "id": 1,
+      "name": "Ryan Tanay",
+      "phoneNo": "6156688693"
+    },
+    {
+      "id": 2,
+      "name": "Emma Beaton",
+      "phoneNo": "1111111111"
+    },
+    {
+      "id": 3,
+      "name": "Dani Adkins",
+      "phoneNo": "2222222"
+    },
+    {
+      "id": 4,
+      "name": "Adam Oswalt",
+      "phoneNo": "3333333333"
+    },
+    {
+      "id": 5,
+      "name": "Fletcher Bangs",
+      "phoneNo": "444444444444"
+    },
+    {
+      "id": 6,
+      "name": "Angela Lee",
+      "phoneNo": "11111"
+    }
+  ],
+  "locations": [
+    {
+      "id": 1,
+      "name": "Nashville North",
+      "address": "500 Circle Way"
+    },
+    {
+      "id": 2,
+      "name": "Nashville South",
+      "address": "10101 Binary Court"
+    }
+  ],
+  "animals": [
+    {
+      "id": 1,
+      "name": "Doodles"
+    },
+    {
+      "id": 2,
+      "name": "Jack"
+    },
+    {
+      "id": 3,
+      "name": "Angus"
+    },
+    {
+      "id": 4,
+      "name": "Henley"
+    },
+    {
+      "id": 5,
+      "name": "Derkins"
+    },
+    {
+      "id": 6,
+      "name": "Checkers"
+    }
+  ],
+  "animalOwners": [
+    {
+      "id": 1,
+      "animalId": 1,
+      "ownerId": 5
+    },
+    {
+      "id": 3,
+      "animalId": 3,
+      "ownerId": 1
+    },
+    {
+      "id": 4,
+      "animalId": 4,
+      "ownerId": 2
+    },
+    {
+      "id": 5,
+      "animalId": 5,
+      "ownerId": 4
+    },
+    {
+      "id": 6,
+      "animalId": 5,
+      "ownerId": 6
+    }
+  ]
+}
