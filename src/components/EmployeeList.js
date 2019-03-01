@@ -22,7 +22,9 @@ class EmployeeList extends Component {
                             </div>
                         )}
                 </section>
-                <button id="fireAll" className="btnAll btn-danger">Fire All</button>
+                <button id="fireAll"
+                onClick = {() => this.props.fireAll()}
+                className="btnAll btn-danger">Fire All</button>
             </React.Fragment>
         )
     }

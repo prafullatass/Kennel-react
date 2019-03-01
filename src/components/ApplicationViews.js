@@ -58,15 +58,33 @@ class ApplicationViews extends Component {
             .then(employees => this.setState({ employees: employees }))
     }
 
+    fireAll = () => {
+        let promises = []
+        this.state.employees.forEach(emp => {
+            promises.push(fetch(`http://localhost:5002/employees/${emp.id}`, {
+                method: "DELETE"
+            })
+            )
+            console.log(promises)
+        }
+        )
+        console.log(promises)
+        Promise.all(promises)
+            .then(() => fetch("http://localhost:5002/employees"))
+            .then(r => r.json())
+            .then(employees => this.setState({ employees: employees }))
+        document.querySelector("#fireAll").disabled = true
+    };
+
+
     render() {
         console.log("render--view")
         return (
             <React.Fragment>
-
-                <Route exact path="/" render={(props) => {
+                <Route exact path="/" render={() => {
                     return <LocationList locations={this.state.locations} />
                 }} />
-                <Route path="/animals" render={(props) => {
+                <Route path="/animals" render={() => {
                     return <AnimalList animals={this.state.animals}
                         owners={this.state.owners}
                         animalOwners={this.state.animalOwners}
@@ -74,7 +92,8 @@ class ApplicationViews extends Component {
                 }} />
                 <Route path="/employees" render={() => {
                     return <EmployeeList employees={this.state.employees}
-                    fireEmployee = {this.fireEmployee} />
+                        fireEmployee={this.fireEmployee}
+                        fireAll={this.fireAll} />
                 }} />
                 <Route path="/owners" render={() => {
                     return <OwnersList owners={this.state.owners} />
