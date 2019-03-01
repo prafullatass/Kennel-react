@@ -1,11 +1,24 @@
 .topMargin{
     margin-top: 50px;
+}
+
+.card-holder {
     display:flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
 .card {
-    width:150px;
+    width:100px;
     height:250px;
+}
+
+.btn {
+    width:60px;
+    margin: 2px;
+}
+
+.btn-container {
+    display: inline;
+    text-align: center;
 }
