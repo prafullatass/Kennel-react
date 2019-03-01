@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import "./Kennel.css"
+import "../Kennel.css"
 
 class LocationList extends Component {
     render() {

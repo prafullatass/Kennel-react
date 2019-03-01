@@ -1,17 +1,17 @@
 import { Route } from 'react-router-dom'
 import React, { Component } from "react"
-import AnimalList from './AnimalList'
-import LocationList from './LocationList'
-import EmployeeList from './EmployeeList'
-
-import "./Kennel.css"
-import OwnersList from './OwnersList';
+import AnimalList from './animal/AnimalList'
+import LocationList from './location/LocationList'
+import EmployeeList from './employee/EmployeeList'
+import OwnersList from './owners/OwnersList';
 import animalManager from '../modules/animalManager';
 import employeeManager from '../modules/employeeManager';
 import locationManager from '../modules/locationManager';
 import ownerManager from '../modules/ownerManager';
 import animalOwnersManager from '../modules/animalOwnersManager';
 
+import "./Kennel.css"
+import AnimalDetail from './animal/AnimalDetail';
 class ApplicationViews extends Component {
     componentDidMount() {
         console.log("componentDidMount --- appView")
@@ -19,15 +19,18 @@ class ApplicationViews extends Component {
 
         animalManager.getAll()
             .then(animals => newState.animals = animals)
-            // .then(() => fetch("http://localhost:5002/employees")
-            //     .then(r => r.json()))
-            employeeManager.getAll()
-            .then(employees => newState.employees = employees)
-            locationManager.getAll()
+        // .then(() => fetch("http://localhost:5002/employees")
+        //     .then(r => r.json()))
+        employeeManager.getAll()
+            .then(employees => {
+                console.log(employees)
+                newState.employees = employees
+            })
+        locationManager.getAll()
             .then(locations => newState.locations = locations)
-            ownerManager.getAll()
+        ownerManager.getAll()
             .then(owners => newState.owners = owners)
-            animalOwnersManager.getAll()
+        animalOwnersManager.getAll()
             .then(animalOwners => newState.animalOwners = animalOwners)
             .then(() => this.setState(newState))
     }
@@ -41,7 +44,7 @@ class ApplicationViews extends Component {
     }
 
     releaseAnimal = (id) => {
-        fetch(`http://localhost:5002/animals/${id}`, {
+        return fetch(`http://localhost:5002/animals/${id}`, {
             method: "DELETE"
         })
             .then(() => fetch("http://localhost:5002/animals"))
@@ -86,7 +89,7 @@ class ApplicationViews extends Component {
                 <Route exact path="/" render={() => {
                     return <LocationList locations={this.state.locations} />
                 }} />
-                <Route path="/animals" render={() => {
+                <Route exact path="/animals" render={() => {
                     return <AnimalList animals={this.state.animals}
                         owners={this.state.owners}
                         animalOwners={this.state.animalOwners}
@@ -97,8 +100,13 @@ class ApplicationViews extends Component {
                         fireEmployee={this.fireEmployee}
                         fireAll={this.fireAll} />
                 }} />
-                <Route path="/owners" render={() => {
+                <Route exact path="/owners" render={() => {
                     return <OwnersList owners={this.state.owners} />
+                }} />
+                <Route exact path="/animals/:animalId(\d+)" render={(props) => {
+                    return <AnimalDetail {...props}
+                        releaseAnimal={this.releaseAnimal}
+                        animals={this.state.animals} />
                 }} />
             </React.Fragment>
         )
