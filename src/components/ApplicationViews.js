@@ -6,25 +6,28 @@ import EmployeeList from './EmployeeList'
 
 import "./Kennel.css"
 import OwnersList from './OwnersList';
+import animalManager from '../modules/animalManager';
+import employeeManager from '../modules/employeeManager';
+import locationManager from '../modules/locationManager';
+import ownerManager from '../modules/ownerManager';
+import animalOwnersManager from '../modules/animalOwnersManager';
 
 class ApplicationViews extends Component {
     componentDidMount() {
         console.log("componentDidMount --- appView")
         const newState = {}
-        fetch("http://localhost:5002/animals")
-            .then(r => r.json())
+
+        animalManager.getAll()
             .then(animals => newState.animals = animals)
-            .then(() => fetch("http://localhost:5002/employees")
-                .then(r => r.json()))
+            // .then(() => fetch("http://localhost:5002/employees")
+            //     .then(r => r.json()))
+            employeeManager.getAll()
             .then(employees => newState.employees = employees)
-            .then(() => fetch("http://localhost:5002/locations")
-                .then(r => r.json()))
+            locationManager.getAll()
             .then(locations => newState.locations = locations)
-            .then(() => fetch("http://localhost:5002/owners")
-                .then(r => r.json()))
+            ownerManager.getAll()
             .then(owners => newState.owners = owners)
-            .then(() => fetch("http://localhost:5002/animalOwners")
-                .then(r => r.json()))
+            animalOwnersManager.getAll()
             .then(animalOwners => newState.animalOwners = animalOwners)
             .then(() => this.setState(newState))
     }
@@ -53,8 +56,7 @@ class ApplicationViews extends Component {
         fetch(`http://localhost:5002/employees/${empId}`, {
             method: "DELETE"
         })
-            .then(() => fetch("http://localhost:5002/employees"))
-            .then(r => r.json())
+            .then(employeeManager.getAll)
             .then(employees => this.setState({ employees: employees }))
     }
 
@@ -70,8 +72,7 @@ class ApplicationViews extends Component {
         )
         console.log(promises)
         Promise.all(promises)
-            .then(() => fetch("http://localhost:5002/employees"))
-            .then(r => r.json())
+            .then(employeeManager.getAll)
             .then(employees => this.setState({ employees: employees }))
         document.querySelector("#fireAll").disabled = true
     };
@@ -79,6 +80,7 @@ class ApplicationViews extends Component {
 
     render() {
         console.log("render--view")
+        console.log(this.state)
         return (
             <React.Fragment>
                 <Route exact path="/" render={() => {
