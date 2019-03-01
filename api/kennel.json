@@ -1,10 +1,12 @@
 
 {
     "employees": [
-        { "id": 1, "name": "Jessica Younker" },
-        { "id": 2, "name": "Jordan Nelson" },
-        { "id": 3, "name": "Zoe LeBlanc" },
-        { "id": 4, "name": "Blaise Roberts" }
+        { "id": 1, "name": "Jessica Younker", "designation": "Manager", "location" : 1},
+        { "id": 2, "name": "Jordan Nelson","designation": "Store Keeper", "location" : 1 },
+        { "id": 3, "name": "Zoe LeBlanc", "designation": "Manager", "location" : 2 },
+        { "id": 4, "name": "Praful Sonawane", "designation": "Excutive", "location" : 2 },
+        { "id": 5, "name": "Joe", "designation": "Lead", "location" : 2 },
+        { "id": 6, "name": "Blaise Roberts","designation": "HR Dept", "location" : 1 }
     ],
 
     "owners": [

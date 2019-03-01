@@ -1,0 +1,11 @@
+.topMargin{
+    margin-top: 50px;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.card {
+    width:150px;
+    height:250px;
+}
