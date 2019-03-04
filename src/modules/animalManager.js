@@ -9,7 +9,7 @@ export default {
         return fetch(`${taco.remoteURL}/animals/${id}`)
         .then(r => r.json())
     },
-    addAnimal(newAnimal) {
+    addNewAnimal(newAnimal) {
         return fetch(`${taco.remoteURL}/animals`, {
           method: "POST",
           headers: {

@@ -45,20 +45,21 @@ class ApplicationViews extends Component {
         animalOwners: []
     }
 
-    addAnimal = (animal, animalOwner) =>
-        animalManager.addAnimal(animal)
-            .then(animal =>{
+    addAnimal = (animal, animalOwner) => {
+        let obj = {}
+        return animalManager.addNewAnimal(animal)
+            .then(animal => {
                 console.log(animal)
                 animalOwner.animalId = animal.id
                 console.log(animalOwner)
                 animalOwnersManager.addAnimalOwner(animalOwner)
-                })
+            })
             .then(() => animalManager.getAll())
-            .then(animals =>
-                this.setState({
-                    animals: animals
-                })
-            )
+            .then(animals => obj.animals = animals)
+            .then(() => animalOwnersManager.getAll())
+            .then(animalOwners => obj.animalOwners = animalOwners)
+            .then(() => this.setState(obj))
+    }
 
     releaseAnimal = (id) => {
         return fetch(`http://localhost:5002/animals/${id}`, {

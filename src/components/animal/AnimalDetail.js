@@ -15,7 +15,7 @@ export default class AnimalDetail extends Component {
 
         return (
             <section className="animal card-width">
-                <div key={animal.id} className="card ">
+                <div key={animal.id} className="card card-width">
                     <div className="card-body">
                         <h4 className="card-title">
                             <img src={dog} alt="" className="icon--dog" />

@@ -84,18 +84,26 @@
   "animals": [
     {
       "id": 3,
+      "breed": "BullDog",
+      "employeeId": 4,
       "name": "Angus"
     },
     {
       "id": 4,
+      "breed": "BullDog",
+      "employeeId": 4,
       "name": "Henley"
     },
     {
       "id": 5,
+      "breed": "BullDog",
+      "employeeId": 4,
       "name": "Derkins"
     },
     {
       "id": 6,
+      "breed": "BullDog",
+      "employeeId": 4,
       "name": "Checkers"
     },
     {
@@ -103,6 +111,12 @@
       "breed": "BullDog",
       "employeeId": 4,
       "id": 7
+    },
+    {
+      "name": "sdsfs",
+      "breed": "xcxczc",
+      "employeeId": 1,
+      "id": 8
     }
   ],
   "animalOwners": [
@@ -127,38 +141,9 @@
       "ownerId": 6
     },
     {
+      "ownerId": 1,
+      "animalId": 8,
       "id": 7
-    },
-    {
-      "ownerId": null,
-      "id": 8
-    },
-    {
-      "ownerId": null,
-      "id": 9
-    },
-    {
-      "ownerId": null,
-      "id": 10
-    },
-    {
-      "ownerId": 3,
-      "id": 11
-    },
-    {
-      "ownerId": 2,
-      "animalId": 9,
-      "id": 12
-    },
-    {
-      "ownerId": 2,
-      "animalId": 10,
-      "id": 13
-    },
-    {
-      "ownerId": 5,
-      "animalId": 7,
-      "id": 14
     }
   ]
 }
