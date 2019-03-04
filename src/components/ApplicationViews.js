@@ -1,4 +1,5 @@
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from "react-router-dom"
+
 import React, { Component } from "react"
 import AnimalList from './animal/AnimalList'
 import LocationList from './location/LocationList'
@@ -14,6 +15,7 @@ import "./Kennel.css"
 import AnimalDetail from './animal/AnimalDetail';
 import EmployeeDetail from './employee/EmployeeDetail';
 import AnimalForm from './animal/AnimalForm';
+import Login from "./login";
 class ApplicationViews extends Component {
     componentDidMount() {
         console.log("componentDidMount --- appView")
@@ -44,6 +46,8 @@ class ApplicationViews extends Component {
         owners: [],
         animalOwners: []
     }
+
+    isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
     addAnimal = (animal, animalOwner) => {
         let obj = {}
@@ -104,6 +108,7 @@ class ApplicationViews extends Component {
         console.log(this.state)
         return (
             <React.Fragment>
+                <Route path="/login" component={Login} />
                 <Route exact path="/" render={() => {
                     return <LocationList locations={this.state.locations} />
                 }} />
@@ -122,11 +127,15 @@ class ApplicationViews extends Component {
                         owners={this.state.owners}
                     />
                 }} />
-                <Route path="/employees" render={(props) => {
-                    return <EmployeeList employees={this.state.employees}
+                <Route exact path="/employees" render={props => {
+                    if (this.isAuthenticated()) {
+                        return <EmployeeList employees={this.state.employees}
                         fireEmployee={this.fireEmployee}
                         fireAll={this.fireAll}
                         {...props} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
                 }} />
                 <Route exact path="/owners" render={() => {
                     return <OwnersList owners={this.state.owners} />
