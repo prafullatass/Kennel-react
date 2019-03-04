@@ -14,17 +14,29 @@ export default class AnimalDetail extends Component {
             a.id === parseInt(this.props.match.params.animalId)) || {}
 
         return (
-            <section className="animal">
-                <div key={animal.id} className="card">
+            <section className="animal card-width">
+                <div key={animal.id} className="card ">
                     <div className="card-body">
                         <h4 className="card-title">
-                            <img src={dog} alt = "" className="icon--dog" />
+                            <img src={dog} alt="" className="icon--dog" />
                             {animal.name}
                         </h4>
                         <h6 className="card-title">{animal.breed}</h6>
+                        <div>Owners : {this.props.animalOwners
+                            .filter(animalOwner =>
+                                animalOwner.animalId === animal.id)
+                            .map(animalOwner =>
+                                this.props.owners.find(owner =>
+                                    owner.id === animalOwner.ownerId).name)} </div>
+                        <div>Caretaker : {this.props.employees
+                            .filter(emp => emp.id === animal.employeeId)
+                            .map(employee =>
+                                this.props.employees.find(emp =>
+                                    emp.id === employee.id).name)}</div>
+
                         <button href="#"
                             onClick={() => this.props.releaseAnimal(animal.id)
-                                            .then(() => this.props.history.push("/animals"))}
+                                .then(() => this.props.history.push("/animals"))}
                             className="card-link">Delete</button>
                     </div>
                 </div>

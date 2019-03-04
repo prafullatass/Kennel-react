@@ -9,3 +9,10 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.animalButton {
+    display: flex;
+    justify-content: space-evenly;
+    width:100px;
+    margin: 0 0 10px 0;
+  }

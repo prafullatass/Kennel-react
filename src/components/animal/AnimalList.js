@@ -5,20 +5,27 @@ import "../Kennel.css"
 class AnimalList extends Component {
     render() {
         return (
-            <section className="topMargin animals">
-                {
-                    this.props.animals.map(animal =>
-                        <Animal key={animal.id} animal={animal}
-                            owners={this.props.animalOwners
-                                .filter(animalOwner =>
-                                    animalOwner.animalId === animal.id)
-                                .map(animalOwner =>
-                                    this.props.owners.find(owner =>
-                                        owner.id === animalOwner.ownerId).name)}
-                            releaseAnimal={this.props.releaseAnimal} />
-                        //<section key = {`animal--${animal.id}`}>{animal.name} </section>
-                    )}
-            </section>
+            <React.Fragment>
+                <div className="animalButton topMargin">
+                    <button type="button"
+                        className="btn btn-success"
+                        onClick={() => {
+                            this.props.history.push("/animals/new")
+                        }
+                        }>
+                        Admit Animal
+                    </button>
+                </div>
+                <section className="topMargin animals">
+                    {
+                        this.props.animals.map(animal =>
+                            <Animal key={animal.id} animal={animal}
+                                releaseAnimal={this.props.releaseAnimal}
+                          />
+                            //<section key = {`animal--${animal.id}`}>{animal.name} </section>
+                        )}
+                </section>
+            </React.Fragment>
         )
     }
 }

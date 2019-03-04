@@ -97,6 +97,12 @@
     {
       "id": 6,
       "name": "Checkers"
+    },
+    {
+      "name": "Henley",
+      "breed": "BullDog",
+      "employeeId": 4,
+      "id": 7
     }
   ],
   "animalOwners": [
@@ -119,6 +125,40 @@
       "id": 6,
       "animalId": 5,
       "ownerId": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "ownerId": null,
+      "id": 8
+    },
+    {
+      "ownerId": null,
+      "id": 9
+    },
+    {
+      "ownerId": null,
+      "id": 10
+    },
+    {
+      "ownerId": 3,
+      "id": 11
+    },
+    {
+      "ownerId": 2,
+      "animalId": 9,
+      "id": 12
+    },
+    {
+      "ownerId": 2,
+      "animalId": 10,
+      "id": 13
+    },
+    {
+      "ownerId": 5,
+      "animalId": 7,
+      "id": 14
     }
   ]
 }

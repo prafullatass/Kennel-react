@@ -13,12 +13,11 @@ class Animal extends Component {
                         <img src={dog} alt="" className="icon--dog" />
                         <div>{this.props.animal.name}</div>
                     </h5>
-                    <div>{this.props.owners.join(", ")}</div>
                     <button onClick={() => this.props.releaseAnimal(this.props.animal.id)}>Release Me</button>
-                    <Link className="nav-link" to={`/animals/${this.props.animal.id}`}>Details</Link>
+                    <Link className="nav-link" to={`/animals/${this.props.animal.id}`}
+                    >Details</Link>
                 </div>
             </div>
-
         )
     }
 }

@@ -12,6 +12,8 @@ import animalOwnersManager from '../modules/animalOwnersManager';
 
 import "./Kennel.css"
 import AnimalDetail from './animal/AnimalDetail';
+import EmployeeDetail from './employee/EmployeeDetail';
+import AnimalForm from './animal/AnimalForm';
 class ApplicationViews extends Component {
     componentDidMount() {
         console.log("componentDidMount --- appView")
@@ -42,6 +44,21 @@ class ApplicationViews extends Component {
         owners: [],
         animalOwners: []
     }
+
+    addAnimal = (animal, animalOwner) =>
+        animalManager.addAnimal(animal)
+            .then(animal =>{
+                console.log(animal)
+                animalOwner.animalId = animal.id
+                console.log(animalOwner)
+                animalOwnersManager.addAnimalOwner(animalOwner)
+                })
+            .then(() => animalManager.getAll())
+            .then(animals =>
+                this.setState({
+                    animals: animals
+                })
+            )
 
     releaseAnimal = (id) => {
         return fetch(`http://localhost:5002/animals/${id}`, {
@@ -89,24 +106,42 @@ class ApplicationViews extends Component {
                 <Route exact path="/" render={() => {
                     return <LocationList locations={this.state.locations} />
                 }} />
-                <Route exact path="/animals" render={() => {
+                <Route exact path="/animals" render={(props) => {
                     return <AnimalList animals={this.state.animals}
                         owners={this.state.owners}
                         animalOwners={this.state.animalOwners}
-                        releaseAnimal={this.releaseAnimal} />
+                        releaseAnimal={this.releaseAnimal}
+                        employees={this.state.employees}
+                        {...props} />
                 }} />
-                <Route path="/employees" render={() => {
+                <Route path="/animals/new" render={(props) => {
+                    return <AnimalForm {...props}
+                        addAnimal={this.addAnimal}
+                        employees={this.state.employees}
+                        owners={this.state.owners}
+                    />
+                }} />
+                <Route path="/employees" render={(props) => {
                     return <EmployeeList employees={this.state.employees}
                         fireEmployee={this.fireEmployee}
-                        fireAll={this.fireAll} />
+                        fireAll={this.fireAll}
+                        {...props} />
                 }} />
                 <Route exact path="/owners" render={() => {
                     return <OwnersList owners={this.state.owners} />
                 }} />
                 <Route exact path="/animals/:animalId(\d+)" render={(props) => {
+                    console.log(props)
                     return <AnimalDetail {...props}
                         releaseAnimal={this.releaseAnimal}
+                        animalOwners={this.state.animalOwners}
+                        employees={this.state.employees}
+                        owners={this.state.owners}
                         animals={this.state.animals} />
+                }} />
+                <Route exact path="/employees/:employeeId(\d+)" render={(props) => {
+                    return <EmployeeDetail {...props}
+                        fireEmployee={this.fireEmployee} />
                 }} />
             </React.Fragment>
         )
