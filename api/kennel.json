@@ -19,12 +19,6 @@
       "location": 2
     },
     {
-      "id": 4,
-      "name": "Praful Sonawane",
-      "designation": "Excutive",
-      "location": 2
-    },
-    {
       "id": 5,
       "name": "Joe",
       "designation": "Lead",
@@ -82,36 +76,6 @@
     }
   ],
   "animals": [
-    {
-      "id": 3,
-      "breed": "BullDog",
-      "employeeId": 4,
-      "name": "Angus"
-    },
-    {
-      "id": 4,
-      "breed": "BullDog",
-      "employeeId": 4,
-      "name": "Henley"
-    },
-    {
-      "id": 5,
-      "breed": "BullDog",
-      "employeeId": 4,
-      "name": "Derkins"
-    },
-    {
-      "id": 6,
-      "breed": "BullDog",
-      "employeeId": 4,
-      "name": "Checkers"
-    },
-    {
-      "name": "Henley",
-      "breed": "BullDog",
-      "employeeId": 4,
-      "id": 7
-    },
     {
       "name": "sdsfs",
       "breed": "xcxczc",

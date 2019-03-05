@@ -14,8 +14,8 @@ export default class AnimalDetail extends Component {
             a.id === parseInt(this.props.match.params.animalId)) || {}
 
         return (
-            <section className="animal card-width">
-                <div key={animal.id} className="card card-width">
+            <section className="animal animal-Detail">
+                <div key={animal.id}>
                     <div className="card-body">
                         <h4 className="card-title">
                             <img src={dog} alt="" className="icon--dog" />
@@ -34,7 +34,7 @@ export default class AnimalDetail extends Component {
                                 this.props.employees.find(emp =>
                                     emp.id === employee.id).name)}</div>
 
-                        <button href="#"
+                        <button
                             onClick={() => this.props.releaseAnimal(animal.id)
                                 .then(() => this.props.history.push("/animals"))}
                             className="card-link">Delete</button>

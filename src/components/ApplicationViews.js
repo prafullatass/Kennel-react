@@ -16,6 +16,7 @@ import AnimalDetail from './animal/AnimalDetail';
 import EmployeeDetail from './employee/EmployeeDetail';
 import AnimalForm from './animal/AnimalForm';
 import Login from "./login";
+
 class ApplicationViews extends Component {
     componentDidMount() {
         console.log("componentDidMount --- appView")
@@ -149,9 +150,13 @@ class ApplicationViews extends Component {
                         owners={this.state.owners}
                         animals={this.state.animals} />
                 }} />
-                <Route exact path="/employees/:employeeId(\d+)" render={(props) => {
+                <Route exact path="/employees/:employeeId(\d+)" render={props => {
+                    console.log(this.state)
                     return <EmployeeDetail {...props}
-                        fireEmployee={this.fireEmployee} />
+                        fireEmployee={this.fireEmployee}
+                        employees = {this.state.employees}
+                        locations = {this.state.locations}
+                        {...props} />
                 }} />
             </React.Fragment>
         )
