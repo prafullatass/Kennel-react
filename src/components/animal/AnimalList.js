@@ -21,8 +21,9 @@ class AnimalList extends Component {
                         this.props.animals.map(animal =>
                             <Animal key={animal.id} animal={animal}
                                 releaseAnimal={this.props.releaseAnimal}
+                                {...this.props}
                           />
-                            //<section key = {`animal--${animal.id}`}>{animal.name} </section>
+                                  //<section key = {`animal--${animal.id}`}>{animal.name} </section>
                         )}
                 </section>
             </React.Fragment>

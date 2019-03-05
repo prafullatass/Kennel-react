@@ -13,6 +13,14 @@ class Animal extends Component {
                         <img src={dog} alt="" className="icon--dog" />
                         <div>{this.props.animal.name}</div>
                     </h5>
+                    <button
+                        type="button"
+                        className="btn btn-success"
+                        onClick={() => {
+                            this.props.history.push(`/animals/${this.props.animal.id}/edit`);
+                        }}
+                    >
+                        Edit </button>
                     <button onClick={() => this.props.releaseAnimal(this.props.animal.id)}>Release Me</button>
                     <Link className="nav-link" to={`/animals/${this.props.animal.id}`}
                     >Details</Link>

@@ -77,10 +77,34 @@
   ],
   "animals": [
     {
-      "name": "sdsfs",
+      "id": 3,
       "breed": "xcxczc",
-      "employeeId": 1,
-      "id": 8
+      "employeeId": 3,
+      "name": "Angus"
+    },
+    {
+      "id": 4,
+      "breed": "xcxczc",
+      "employeeId": 2,
+      "name": "Henley"
+    },
+    {
+      "id": 5,
+      "name": "Derkins",
+      "breed": "Lolli",
+      "employeeId": 1
+    },
+    {
+      "id": 6,
+      "name": "Checkers",
+      "breed": "xcxczc",
+      "employeeId": 1
+    },
+    {
+      "id": 8,
+      "name": "Spirit",
+      "breed": "bullDog",
+      "employeeId": 1
     }
   ],
   "animalOwners": [
