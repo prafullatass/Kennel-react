@@ -3,7 +3,7 @@ import "./Animal.css"
 import dog from "./DogIcon.png"
 
 
-export default class AnimalDetail extends Component {
+export default class  extends Component {
     render() {
         /*
             Using the route parameter, find the animal that the
@@ -33,7 +33,6 @@ export default class AnimalDetail extends Component {
                             .map(employee =>
                                 this.props.employees.find(emp =>
                                     emp.id === employee.id).name)}</div>
-
                         <button
                             onClick={() => this.props.releaseAnimal(animal.id)
                                 .then(() => this.props.history.push("/animals"))}

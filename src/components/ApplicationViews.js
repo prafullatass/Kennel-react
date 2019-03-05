@@ -17,27 +17,29 @@ import EmployeeDetail from './employee/EmployeeDetail';
 import AnimalForm from './animal/AnimalForm';
 import Login from "./login";
 import AnimalEditForm from "./animal/animalEditForm";
+import { Promise } from "q";
 
 class ApplicationViews extends Component {
     componentDidMount() {
         console.log("componentDidMount --- appView")
         const newState = {}
+        const promises = []
+        promises.push(animalManager.getAll()
+            .then(animals => newState.animals = animals))
 
-        animalManager.getAll()
-            .then(animals => newState.animals = animals)
-        // .then(() => fetch("http://localhost:5002/employees")
-        //     .then(r => r.json()))
-        employeeManager.getAll()
-            .then(employees => {
-                console.log(employees)
-                newState.employees = employees
-            })
-        locationManager.getAll()
-            .then(locations => newState.locations = locations)
-        ownerManager.getAll()
-            .then(owners => newState.owners = owners)
-        animalOwnersManager.getAll()
-            .then(animalOwners => newState.animalOwners = animalOwners)
+        promises.push(employeeManager.getAll()
+            .then(employees => newState.employees = employees))
+
+        promises.push(locationManager.getAll()
+            .then(locations => newState.locations = locations))
+
+        promises.push(ownerManager.getAll()
+            .then(owners => newState.owners = owners))
+
+        promises.push(animalOwnersManager.getAll()
+            .then(animalOwners => newState.animalOwners = animalOwners))
+
+        Promise.all(promises)
             .then(() => this.setState(newState))
     }
 
@@ -76,6 +78,7 @@ class ApplicationViews extends Component {
                 })
             });
     };
+
     releaseAnimal = (id) => {
         return fetch(`http://localhost:5002/animals/${id}`, {
             method: "DELETE"
@@ -98,13 +101,11 @@ class ApplicationViews extends Component {
 
     fireAll = () => {
         let promises = []
-        this.state.employees.forEach(emp => {
+        this.state.employees.forEach(emp =>
             promises.push(fetch(`http://localhost:5002/employees/${emp.id}`, {
                 method: "DELETE"
             })
             )
-            console.log(promises)
-        }
         )
         console.log(promises)
         Promise.all(promises)
@@ -115,7 +116,7 @@ class ApplicationViews extends Component {
 
 
     render() {
-        console.log("render--view")
+        console.log("Render--View")
         console.log(this.state)
         return (
             <React.Fragment>
@@ -160,20 +161,18 @@ class ApplicationViews extends Component {
                         owners={this.state.owners}
                         animals={this.state.animals} />
                 }} />
-                <Route
-                    path="/animals/:animalId(\d+)/edit" render={props => {
-                        return <AnimalEditForm {...props}
+                <Route path="/animals/:animalId(\d+)/edit" render={props => {
+                    return <AnimalEditForm {...props}
                         employees={this.state.employees}
                         updateAnimal={this.updateAnimal} />
-                    }}
-                />
-                <Route exact path="/employees/:employeeId(\d+)" render={props => {
-                    console.log(this.state)
+                }} />
+                <Route exact path="/employees/:employeeId(\d+)" render={(props) => {
+                    console.log("Route", this.state)
                     return <EmployeeDetail {...props}
                         fireEmployee={this.fireEmployee}
                         employees={this.state.employees}
                         locations={this.state.locations}
-                        {...props} />
+                    />
                 }} />
             </React.Fragment>
         )

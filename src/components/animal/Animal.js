@@ -19,9 +19,8 @@ class Animal extends Component {
                         onClick={() => {
                             this.props.history.push(`/animals/${this.props.animal.id}/edit`);
                         }}
-                    >
-                        Edit </button>
-                    <button onClick={() => this.props.releaseAnimal(this.props.animal.id)}>Release Me</button>
+                    > Edit </button>
+                    <button onClick={() => this.props.releaseAnimal(this.props.animal.id)}>Discharge</button>
                     <Link className="nav-link" to={`/animals/${this.props.animal.id}`}
                     >Details</Link>
                 </div>
