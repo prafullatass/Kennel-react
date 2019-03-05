@@ -18,6 +18,7 @@ import AnimalForm from './animal/AnimalForm';
 import Login from "./login";
 import AnimalEditForm from "./animal/animalEditForm";
 import { Promise } from "q";
+import EmployeeForm from "./employee/employeeForm";
 
 class ApplicationViews extends Component {
     componentDidMount() {
@@ -52,6 +53,12 @@ class ApplicationViews extends Component {
     }
 
     isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+
+    addEmployee =(emp) => {
+        return employeeManager.addNewEmployee(emp)
+        .then(() => employeeManager.getAll())
+        .then(employees => this.setState({employees : employees}))
+    }
 
     addAnimal = (animal, animalOwner) => {
         let obj = {}
@@ -92,7 +99,7 @@ class ApplicationViews extends Component {
     }
 
     fireEmployee = (empId) => {
-        fetch(`http://localhost:5002/employees/${empId}`, {
+        return fetch(`http://localhost:5002/employees/${empId}`, {
             method: "DELETE"
         })
             .then(employeeManager.getAll)
@@ -173,6 +180,11 @@ class ApplicationViews extends Component {
                         employees={this.state.employees}
                         locations={this.state.locations}
                     />
+                }} />
+                <Route exact path="/employee/new" render={(props) => {
+                    return <EmployeeForm locations={this.state.locations}
+                    addEmployee={this.addEmployee}
+                    {...props} />
                 }} />
             </React.Fragment>
         )

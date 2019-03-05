@@ -15,7 +15,8 @@ console.log("render --- employee Detail",this.props)
                 </div>
                 <div className="btn-container">
                     <button className="btn btn-outline-danger"
-                        onClick={() => { this.props.fireEmployee(`${employee.id}`) }}>
+                        onClick={() => { this.props.fireEmployee(`${employee.id}`)
+                                        .then(() => {this.props.history.push("/employees")})}}>
                         Fire
                         </button>
                     <button className="btn btn-outline-primary">Edit</button>

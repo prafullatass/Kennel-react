@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import "./Employee.css"
+import EmployeeForm from './employeeForm';
 
 class EmployeeList extends Component {
     render() {
         return (
             <React.Fragment>
-                <section></section>
-                <section className="topMargin card-holder">
+                <section className ="topMargin">
+                    <button onClick={() => {
+                        this.props.history.push("/employee/new")
+                    }} >Add New Employee
+                    </button>
+                </section>
+                <section className=" card-holder">
                     {
                         this.props.employees.map(employee =>
                             <div key={`employee--${employee.id}`} className="card">
